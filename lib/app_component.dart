@@ -2,20 +2,21 @@
 
 // is governed by a BSD-style license that can be found in the LICENSE file.
 
-import 'dart:convert';
-import 'package:angular2/angular2.dart';
-import 'package:angular2/router.dart';
-import 'package:osiguranje11082017_v3/Osiguranje/osiguranjeclass.dart';
+import 'package:angular/angular.dart';
+import 'package:angular_router/angular_router.dart';
+import 'package:angular_forms/angular_forms.dart';
+import 'package:firebase/firebase.dart' as fb;
+import 'package:osiguranje11082017_v3/Korisnici/korisnik.dart';
+import 'package:osiguranje11082017_v3/Osiguranje/osiguranje.dart';
 import 'package:osiguranje11082017_v3/Servis/Service.dart';
 import 'package:osiguranje11082017_v3/dodajVijest_component.dart';
 import 'package:osiguranje11082017_v3/forumosiguranje_component.dart';
-import 'package:osiguranje11082017_v3/Korisnici/korisnik.dart';
 import 'package:osiguranje11082017_v3/kontakt_component.dart';
 import 'package:osiguranje11082017_v3/onama_component.dart';
 import 'package:osiguranje11082017_v3/osiguranjedetalji_component.dart';
 import 'package:osiguranje11082017_v3/planosiguranja_component.dart';
 import 'package:osiguranje11082017_v3/pocetna_component.dart';
-import 'package:firebase/firebase.dart' as fb;
+import 'package:dson/dson.dart';
 
 // AngularDart info: https://webdev.dartlang.org/angular
 // Components info: https://webdev.dartlang.org/components
@@ -23,8 +24,8 @@ import 'package:firebase/firebase.dart' as fb;
 @Component(
     selector: 'my-app',
     templateUrl: 'app_component.html',
-    directives: const[CORE_DIRECTIVES, ROUTER_DIRECTIVES],
-    providers: const [Service, ROUTER_PROVIDERS]
+    directives: const[CORE_DIRECTIVES, ROUTER_DIRECTIVES, formDirectives],
+    providers: const [Service, ROUTER_PROVIDERS, const Provider(LocationStrategy, useClass: HashLocationStrategy)]
 )
 @RouteConfig(const[
   const Route(path: '/pocetna',
@@ -53,7 +54,7 @@ class AppComponent
   @Input()
   List<Korisnik> korisnici;
 
-  List<OsiguranjeClass> osiguranjeClass;
+  List<Osiguranje> osiguranja;
   bool submitted = false;
   bool novaVijest = true;
 
@@ -66,24 +67,18 @@ class AppComponent
   @override
   ngOnInit() async {
     fb.initializeApp(
-        apiKey: "AIzaSyBoO3CklXNReACBWzacUDRIG7pWt8Ii48k",
-        authDomain: "osiguranje-3bb86.firebaseapp.com",
-        databaseURL: "https://osiguranje-3bb86.firebaseio.com",
-        storageBucket: "osiguranje-3bb86.appspot.com"
+        apiKey: "AIzaSyA6RUu8b99WoH-lywPlvn0rlAOvJDHcTkE",
+        authDomain: "osiguranje-8f1f4.firebaseapp.com",
+        databaseURL: "https://osiguranje-8f1f4.firebaseio.com",
+        storageBucket: "osiguranje-8f1f4.appspot.com"
     );
     fb.Database database = fb.database();
     fb.DatabaseReference ref = database.ref('osiguranja');
 
     ref.onValue.listen((e) {
       fb.DataSnapshot datasnapshot = e.snapshot;
-      var osiguranja = datasnapshot.val();
-      List osiguranjaMapa = JSON.decode(osiguranja);
-
-      for (var i = 0; i < osiguranjaMapa.length; i++) {
-        OsiguranjeClass o = new OsiguranjeClass();
-        o.naziv = osiguranjaMapa[i]['naziv'];
-        osiguranjeClass.add(o);
-      }
+      osiguranja = fromMapList(datasnapshot.val(), Osiguranje);
+      print('osiguranja: $osiguranja');
     });
 
 

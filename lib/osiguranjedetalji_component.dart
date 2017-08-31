@@ -1,13 +1,13 @@
-import 'package:angular2/angular2.dart';
-import 'package:angular2/router.dart';
-import 'package:osiguranje11082017_v3/Osiguranje/osiguranjeclass.dart';
+import 'package:angular/angular.dart';
+import 'package:angular_router/angular_router.dart';
+import 'package:osiguranje11082017_v3/Osiguranje/osiguranje.dart';
 import 'package:osiguranje11082017_v3/Servis/Service.dart';
 
 @Component
   (
   selector: 'osiguranjedetalji',
   templateUrl: 'osiguranjedetalji.html',
-  styleUrls: const ['style.css'],
+  directives: const [CORE_DIRECTIVES],
   providers: const [Service],
   inputs: const['odabranoOsiguranje'],
 )
@@ -17,7 +17,7 @@ class OsiguranjeDetaljiComponent
 
   Service _Service;
   RouteParams _routeParams;
-  @Input() OsiguranjeClass osiguranje;
+  @Input() Osiguranje osiguranje;
   String naziv = null;
   String tip = null;
 

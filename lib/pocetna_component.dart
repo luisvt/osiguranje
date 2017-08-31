@@ -1,11 +1,11 @@
-import 'package:angular2/angular2.dart';
+import 'package:angular/angular.dart';
 import 'package:osiguranje11082017_v3/Servis/Service.dart';
 import 'package:osiguranje11082017_v3/Vijesti/Vijest.dart';
 
 @Component(
   selector: 'pocetna',
   templateUrl: 'pocetna.html',
-  styleUrls: const ['style.css'],
+  directives: const [CORE_DIRECTIVES],
 )
 class PocetnaComponent implements OnInit {
 

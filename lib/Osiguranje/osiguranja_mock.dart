@@ -1,9 +1,9 @@
-import 'package:osiguranje11082017_v3/Osiguranje/osiguranjeclass.dart';
+import 'package:osiguranje11082017_v3/Osiguranje/osiguranje.dart';
 
 
-List<OsiguranjeClass> osiguranja = [
+List<Osiguranje> osiguranja = [
 
-  new OsiguranjeClass()
+  new Osiguranje()
     ..naziv = "Osiguranje imovine"
     ..opis = "Vaša privatna kao i poslovna imovina izložena je različitim nepredvidivim događajima koja mogu  znatno uticati  na smanjenje njene vrijednosti."
     ..tip = "imovina"
@@ -45,7 +45,7 @@ List<OsiguranjeClass> osiguranja = [
         "Vi živite mi brinemo!"
         "Vaše Sarajevo osiguranje",
 
-  new OsiguranjeClass()
+  new Osiguranje()
     ..naziv = "Osiguranje motornih vozila"
     ..opis = "Obavezno osiguranje vlasnika odnosno korisnika motornog vozila je obavezno zakonsko osiguranje od odgovornosti za štete pričinjene trećim osobama."
     ..tip = "auto"
@@ -87,7 +87,7 @@ List<OsiguranjeClass> osiguranja = [
         "Vi živite mi brinemo!"
         "Vaše Sarajevo osiguranje",
 
-  new OsiguranjeClass()
+  new Osiguranje()
     ..naziv = "Putničko zdravstveno osiguranje"
     ..opis = "Planiranje putovanja je često kompleksan posao. Kada planiramo putovanje, pogotovo u inostranstvo potrebno je da se zapitamo šta ako nam se nešto desi?"
     ..tip = "zivot"
@@ -128,7 +128,7 @@ List<OsiguranjeClass> osiguranja = [
         "Dodatne ugodnosti možete ugovarati u našim podružnicama i prodajnim punktovima, dok sve ostale informacije možete dobiti putem e-maila pzo@sarajevoosiguranje.ba ili na telefone 061 266 680 i 061 489 999"
         "Vi živite mi brinemo!"
         "Vaše Sarajevo osiguranje",
-  new OsiguranjeClass()
+  new Osiguranje()
     ..naziv = "Osiguranje nezgode"
     ..opis = "Osiguranje nezgode je osiguranje koje pokriva štetu nastalu usljed nezgode, to je vrsta osiguranja osobe od iznenadnih i nepredvidljivih događaja."
     ..tip = "zivot"
@@ -169,7 +169,7 @@ List<OsiguranjeClass> osiguranja = [
         "Dodatne ugodnosti možete ugovarati u našim podružnicama i prodajnim punktovima, dok sve ostale informacije možete dobiti putem e-maila pzo@sarajevoosiguranje.ba ili na telefone 061 266 680 i 061 489 999"
         "Vi živite mi brinemo!"
         "Vaše Sarajevo osiguranje",
-  new OsiguranjeClass()
+  new Osiguranje()
     ..naziv = "Osiguranje transporta"
     ..opis = "Roba je u svakom slučaju izložena određenim rizicima. A kada se roba transportuje  onda se ti rizici multipliciraju. Duga putovanja, utovari, pretovari, istovari, različita prijevozna sredstva, loše vrijeme, krađe, fizička oštećenja samo su neki rizici kojima može biti izložena roba u transportu."
     ..tip = "auto"
@@ -210,7 +210,7 @@ List<OsiguranjeClass> osiguranja = [
         "Dodatne ugodnosti možete ugovarati u našim podružnicama i prodajnim punktovima, dok sve ostale informacije možete dobiti putem e-maila pzo@sarajevoosiguranje.ba ili na telefone 061 266 680 i 061 489 999"
         "Vi živite mi brinemo!"
         "Vaše Sarajevo osiguranje",
-  new OsiguranjeClass()
+  new Osiguranje()
     ..naziv = "Životno osiguranje"
     ..opis = "Osiguranjem onoga što je najvrijednije – Vašeg života i života vaših najbližih - dobivate oslonac za sigurniju budućnost. Osigurajte svoj život i učinite budućnost manje neizvjesnom!"
     ..tip = "zivot"

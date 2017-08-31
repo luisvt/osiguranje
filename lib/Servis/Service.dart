@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:angular2/angular2.dart';
+import 'package:angular/angular.dart';
 import 'package:osiguranje11082017_v3/Korisnici/korisnik.dart';
 import 'package:osiguranje11082017_v3/Korisnici/korisnik_mock.dart';
 import 'package:osiguranje11082017_v3/Osiguranje/osiguranja_mock.dart';
-import 'package:osiguranje11082017_v3/Osiguranje/osiguranjeclass.dart';
+import 'package:osiguranje11082017_v3/Osiguranje/osiguranje.dart';
 import 'package:osiguranje11082017_v3/Pitanja/pitanja_mock.dart';
 import 'package:osiguranje11082017_v3/Pitanja/pitanje.dart';
 import 'package:osiguranje11082017_v3/Vijesti/Vijest.dart';
@@ -21,12 +21,12 @@ class Service {
   Future<int> GetMaxPitanje() async => pitanja.length;
 
   //osiguranje
-  Future<List<OsiguranjeClass>> getOsiguranja() async => osiguranja;
+  Future<List<Osiguranje>> getOsiguranja() async => osiguranja;
 
-  Future<OsiguranjeClass> GetByNameOsiguranje(String naziv) async =>
+  Future<Osiguranje> GetByNameOsiguranje(String naziv) async =>
       osiguranja.firstWhere((osiguranje) => osiguranje.naziv == naziv);
 
-  Future<OsiguranjeClass> GetOsiguranjeById(num id) async =>
+  Future<Osiguranje> GetOsiguranjeById(num id) async =>
       osiguranja.firstWhere((o) => o.id == id);
 
   //korisnici

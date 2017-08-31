@@ -1,11 +1,10 @@
 import 'dart:html';
-import 'package:angular2/angular2.dart';
+import 'package:angular/angular.dart';
 
 
 @Component(
   selector: 'kontakt',
   templateUrl: 'kontakt.html',
-  styleUrls: const ['style.css'],
 )
 class KontaktComponent {
 

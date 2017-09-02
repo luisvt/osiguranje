@@ -1,0 +1,14 @@
+<div id="site-content">
+    <main class="main-content">
+        <div class="page">
+            <div class="container" *ngIf="insurance != null">
+                <div class="item" style="margin-left: 0px; margin-right: 0px">
+                    <img src="images/putnickozdravstveno.png" alt="auto" style="height: 550px; width:100%">
+                </div>
+                <h4 class="entry-title">{{insurance.name}}</h4>
+                <div [innerHtml]="insurance.longDescription"></div>
+            </div>
+        </div>
+    </main>
+
+</div>

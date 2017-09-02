@@ -1,0 +1,49 @@
+<div id="site-content">
+    <main class="main-content">
+        <div class="page">
+            <div class="container">
+                <h4 class="entry-title">Insurance Plan</h4>
+                <p>Below is a list of the insurance services we offer you. Choose the insurance that you fill out
+                    all your requirements and needs.</p>
+
+                <div class="filter-links filterable-nav">
+                    <select class="mobile-filter">
+                        <option value="*">Show all</option>
+                        <option value=".zdravstvo">health insurance</option>
+                        <option value=".automobil">car insurance</option>
+                        <option value=".imovina">property insurance</option>
+                    </select>
+                    <strong>Select category:</strong>
+                    <a href="#" class="current wow fadeInRight" data-filter="*">Show all</a>
+                    <a href="#" class="wow fadeInRight" data-wow-delay=".2s"
+                       data-filter=".zdravstvo">health insurance</a>
+                    <a href="#" class="wow fadeInRight" data-wow-delay=".4s"
+                       data-filter=".automobil">car insurance</a>
+                    <a href="#" class="wow fadeInRight" data-wow-delay=".6s"
+                       data-filter=".imovina">property insurance</a>
+                </div>
+
+                <div *ngFor="let insurance of insurances">
+                    <div class="insurance-item filterable-item" style="float: right">
+                        <div class="insurance-content">
+                            <div *ngIf="insurance.type == 'zivot'">
+                                <div class="insurance-icon"><i class="fa fa-user-md"></i></div>
+                            </div>
+                            <div *ngIf="insurance.type == 'auto'">
+                                <div class="insurance-icon"><i class="fa fa-car"></i></div>
+                            </div>
+                            <div *ngIf="insurance.type == 'imovina'">
+                                <div class="insurance-icon"><i class="fa fa-home"></i></div>
+                            </div>
+                            <h3 class="insurance-title">{{insurance.name}}</h3>
+                            <p>{{insurance.description}}</p>
+                            <a href="#" class="button"
+                               [routerLink]="['InsuranceDetails', {id: insurance.id.toString()}]">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>

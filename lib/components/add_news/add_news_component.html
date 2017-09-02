@@ -1,0 +1,95 @@
+    <style>
+        /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+        .row.content {
+            height: 1500px
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+
+            .row.content {
+                height: auto;
+            }
+        }
+    </style>
+<div id="site-content">
+    <main class="main-content">
+        <div class="breadcrumbs">
+            <div class="container">
+                <a [routerLink]="['Home']">Home</a>
+                <span>Forum</span>
+            </div>
+        </div>
+
+        <div class="page">
+            <div class="container">
+                <div class="container-fluid">
+                    <div class="row content">
+
+                        <div class="col-sm-9">
+                            <h1>
+                                <small>Add news</small>
+                            </h1>
+                            <hr>
+                            <h4>Add news</h4>
+                            <form role="form">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <input type="text" id="naslov" style="width: 840px"
+                                                   placeholder="News headline.." required>
+                                        </div>
+                                    </div>
+                                    <textarea class="form-control" rows="3" id="vijest"
+                                              placeholder="Content.." required></textarea>
+                                    <br>
+                                    <label class="control-label">Select a picture</label>
+                                    <input id="picture" type="file" class="file" placeholder="Select a Picture">
+                                </div>
+                                <button type="submit" class="btn btn-success" (click)="addNews()"
+                                        style="float: right">Add News
+                                </button>
+                            </form>
+                            <br><br>
+                            <hr>
+                            <h3>News</h3>
+                            <br><br>
+                            <div class="row" *ngFor="let news_ of news">
+                                <div class="col-sm-2 text-center">
+                                    <img [src]="news_.picture" class="img-circle" height="65" width="65" alt="Avatar">
+                                </div>
+                                <div class="col-sm-10">
+                                    <h1>{{news_.title}}</h1>
+                                    <h4>
+                                        <small>{{news_.date}}</small>
+                                    </h4>
+                                    <br>
+                                    <p>{{news_.news}}</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- .page -->
+    </main>
+</div>
+

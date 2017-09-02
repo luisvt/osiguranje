@@ -6,7 +6,7 @@
                     <img src="images/logo.png" alt="Company Name" class="logo">
                     <div class="logo-text">
                         <h1 class="site-title">Emona osiguranje</h1>
-                        <small class="description">Naše klijente je lako prepoznati!</small>
+                        <small class="description">Our customers are easy to recognize!</small>
                     </div>
                 </a> <!-- #branding -->
 
@@ -27,21 +27,18 @@
                 <div class="main-navigation">
                     <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
                     <ul class="menu">
-                        <li class="menu-item"><a [routerLink]="['Pocetna']">Početna</a></li>
-                        <li class="menu-item"><a [routerLink]="['PlanOsiguranja']">Ponuda osiguranja</a></li>
-                        <li class="menu-item"><a [routerLink]="['ForumOsiguranja']">Forum</a></li>
-                        <li class="menu-item"><a [routerLink]="['ONama']">O nama</a></li>
-                        <li class="menu-item"><a [routerLink]="['Kontakt']">Kontakt</a></li>
-                        <li class="menu-item"><a [routerLink]="['Vijest']" [hidden]="novaVijest">Dodaj novu vijest</a>
-                        </li>
+                        <li class="menu-item"><a [routerLink]="['Home']">Home</a></li>
+                        <li class="menu-item"><a [routerLink]="['InsurancePlan']">Insurance Plans</a></li>
+                        <li class="menu-item"><a [routerLink]="['Forum']">Forum</a></li>
+                        <li class="menu-item"><a [routerLink]="['AboutUs']">About Us</a></li>
+                        <li class="menu-item"><a [routerLink]="['Contact']">Contact</a></li>
+                        <li class="menu-item"><a [routerLink]="['AddNews']" [hidden]="newNews">Add News</a></li>
                     </ul> <!-- .menu -->
                 </div> <!-- .main-navigation -->
-                <div *ngFor="let korisnik of korisnici" style="margin-right: -180px; margin-left: 20px">
                     <ul class="nav navbar-right" style="float: left; height: 30px">
                         <li class="dropdown">
                             <a href="#" data-toggle="dropdown"
                                class="fa fa-user" style="
-                           float: right;
                               width: 150px;
                               height: 30px;
                               border: 1px solid rgba(255, 255, 255, 0.3);
@@ -52,49 +49,50 @@
                               margin-left: 5px;
                               display: inline-block;
                               -webkit-transition: .3s ease;
-                              transition: .3s ease; "> {{korisnik.ime}}
+                              transition: .3s ease; ">
+                                <template [ngIf]="user.name != null">{{user.name}}</template>
+                                <template [ngIf]="user.name == null">Sign In</template>
                             </a>
                             <ul id="login-dp" class="dropdown-menu" [hidden]="submitted">
                                 <li>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            Prijavi se putem
+                                            Sign in via
                                             <div class="social-buttons">
                                                 <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i>
                                                     Facebook</a>
                                                 <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
                                             </div>
                                             ili
-                                            <form class="form" role="form" method="post" action="login"
-                                                  accept-charset="UTF-8" id="login-nav">
+                                            <form class="form">
                                                 <div class="form-group">
-                                                    <label class="sr-only" for="email">Email adresa</label>
-                                                    <input type="email" [(ngModel)]="korisnik.email"
-                                                           class="form-control" id="email" placeholder="Email adresa"
+                                                    <label class="sr-only" for="email">Email Address</label>
+                                                    <input type="email" [(ngModel)]="user.email"
+                                                           class="form-control" id="email" placeholder="Email Address"
                                                            required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="sr-only" for="sifra">Šifra</label>
+                                                    <label class="sr-only" for="password">Password</label>
                                                     <input type="password" class="form-control"
-                                                           [(ngModel)]="korisnik.sifra" id="sifra" placeholder="Šifra"
+                                                           [(ngModel)]="user.password" id="password" placeholder="Password"
                                                            required>
                                                     <div class="help-block text-right"><a
-                                                            href="">Zaboravili ste šifru?</a></div>
+                                                            href="">You forgot the password?</a></div>
                                                 </div>
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-primary btn-block"
-                                                            (click)="PrijaviSe()">Prijavi se
+                                                            (click)="signIn()">Sign In
                                                     </button>
                                                 </div>
                                                 <div class="checkbox">
                                                     <label>
-                                                        <input type="checkbox"> Zapamti me
+                                                        <input type="checkbox"> Remember me
                                                     </label>
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="bottom text-center">
-                                            Novi ste? <a href="#"><b>Pridružite nam se</b></a>
+                                            Are you new? <a href="#"><b>Join Us</b></a>
                                         </div>
                                     </div>
                                 </li>
@@ -103,14 +101,11 @@
                                 <li>
                                     <div class="row">
                                         <div class="col-md-12">
-                                            Odjavi se
-                                            <br>
-                                            <br>
                                             <form class="form" role="form" style="padding-left: 5px; padding-right: 5px"
                                                   action="login" accept-charset="UTF-8" id="logout-nav">
                                                 <div class="form-group">
                                                     <button type="submit" class="btn btn-fb btn-block"
-                                                            (click)="OdjaviSe()">Odjavi se
+                                                            (click)="signOut()">Sign Out
                                                     </button>
                                                 </div>
                                             </form>
@@ -120,7 +115,6 @@
                             </ul>
                         </li>
                     </ul>
-                </div>
 
                 <div class="social-links">
                     <a href="#"><i class="fa fa-facebook"></i></a>
@@ -158,11 +152,11 @@
                         <div class="widget">
                             <h3 class="widget-title">Emona osiguranje</h3>
                             <ul class="no-bullet">
-                                <li><a [routerLink]="['Pocetna']">Početna</a></li>
-                                <li><a [routerLink]="['PlanOsiguranja']">Ponuda osiguranja</a></li>
-                                <li><a [routerLink]="['ForumOsiguranja']">Forum</a></li>
-                                <li><a [routerLink]="['ONama']">O nama</a></li>
-                                <li><a [routerLink]="['Kontakt']">Kontakt</a></li>
+                                <li><a [routerLink]="['Home']">Home</a></li>
+                                <li><a [routerLink]="['InsurancePlan']">Insurance Plan</a></li>
+                                <li><a [routerLink]="['Forum']">Forum</a></li>
+                                <li><a [routerLink]="['AboutUs']">AboutUs</a></li>
+                                <li><a [routerLink]="['Contact']">Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -185,11 +179,11 @@
         <div class="bottom-footer">
             <div class="container">
                 <nav class="footer-navigation">
-                    <a href="pocetna.html">Početna</a>
-                    <a href="planosiguranja.html">Ponuda osiguranja</a>
+                    <a href="components/home/home_component.html">Home</a>
+                    <a href="components/insurance_plan/insurance_plan_component.html">Insurance Plans</a>
                     <a href="resource.html">Forum</a>
-                    <a href="resource.html">O nama</a>
-                    <a href="kontakt.html">Kontakt</a>
+                    <a href="resource.html">About Us</a>
+                    <a href="components/contact/contact_component.html">Kontakt</a>
                 </nav>
 
                 <div class="colophon">Copyright 2017 Emona osiguranje.</div>

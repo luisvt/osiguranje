@@ -210,13 +210,13 @@ packages:
       name: intl
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.0"
+    version: "0.15.1"
   isolate:
     description:
       name: isolate
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.2.3"
+    version: "1.0.0"
   js:
     description:
       name: js
@@ -240,7 +240,7 @@ packages:
       name: matcher
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.12.1+1"
+    version: "0.12.1+2"
   meta:
     description:
       name: meta
@@ -258,7 +258,7 @@ packages:
       name: observable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.0+1"
+    version: "0.20.4+1"
   package_config:
     description:
       name: package_config
@@ -294,7 +294,7 @@ packages:
       name: quiver
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.24.0"
+    version: "0.25.0"
   quiver_hashcode:
     description:
       name: quiver_hashcode
@@ -398,4 +398,4 @@ packages:
     source: hosted
     version: "2.1.12"
 sdks:
-  dart: "1.24.2"
+  dart: ">=1.24.2 <2.0.0-dev.infinity"

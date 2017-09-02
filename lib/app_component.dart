@@ -6,16 +6,16 @@ import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:firebase/firebase.dart' as fb;
-import 'package:osiguranje11082017_v3/Korisnici/korisnik.dart';
-import 'package:osiguranje11082017_v3/Osiguranje/osiguranje.dart';
-import 'package:osiguranje11082017_v3/Servis/Service.dart';
-import 'package:osiguranje11082017_v3/dodajVijest_component.dart';
-import 'package:osiguranje11082017_v3/forumosiguranje_component.dart';
-import 'package:osiguranje11082017_v3/kontakt_component.dart';
-import 'package:osiguranje11082017_v3/onama_component.dart';
-import 'package:osiguranje11082017_v3/osiguranjedetalji_component.dart';
-import 'package:osiguranje11082017_v3/planosiguranja_component.dart';
-import 'package:osiguranje11082017_v3/pocetna_component.dart';
+import 'package:osiguranje/models/user.dart';
+import 'package:osiguranje/models/insurance.dart';
+import 'package:osiguranje/services/Service.dart';
+import 'package:osiguranje/components/add_news/add_news_component.dart';
+import 'package:osiguranje/components/forum/forum_component.dart';
+import 'package:osiguranje/components/contact/contact_component.dart';
+import 'package:osiguranje/components/about_us/about_us_component.dart';
+import 'package:osiguranje/components/insurance_details/insurance_details_component.dart';
+import 'package:osiguranje/components/insurance_plan/insurance_plan_component.dart';
+import 'package:osiguranje/components/home/home_component.dart';
 import 'package:dson/dson.dart';
 
 // AngularDart info: https://webdev.dartlang.org/angular
@@ -28,41 +28,38 @@ import 'package:dson/dson.dart';
     providers: const [Service, ROUTER_PROVIDERS, const Provider(LocationStrategy, useClass: HashLocationStrategy)]
 )
 @RouteConfig(const[
-  const Route(path: '/pocetna',
-      name: 'Pocetna',
-      component: PocetnaComponent,
+  const Route(path: '/home',
+      name: 'Home',
+      component: HomeComponent,
       useAsDefault: true),
-  const Route(path: '/planosigurnja',
-      name: 'PlanOsiguranja',
-      component: PlanOsiguranjaComponent),
+  const Route(path: '/insurance-plan',
+      name: 'InsurancePlan',
+      component: InsurancePlanComponent),
   const Route(path: '/forum',
-      name: 'ForumOsiguranja',
-      component: ForumOsiguranjeComponent),
-  const Route(path: '/onama', name: 'ONama', component: ONamaComponent),
-  const Route(path: '/kontakt', name: 'Kontakt', component: KontaktComponent),
+      name: 'Forum',
+      component: ForumComponent),
+  const Route(path: '/about-us', name: 'AboutUs', component: AboutUsComponent),
+  const Route(path: '/contact', name: 'Contact', component: ContactComponent),
   const Route(
-      path: '/novavijest', name: 'Vijest', component: DodajVijestComponent),
-  const Route(path: '/vijestdetalji',
-      name: 'OsiguranjeDetaljiComponent',
-      component: OsiguranjeDetaljiComponent),
+      path: '/add-news', name: 'AddNews', component: AddNewsComponent),
+  const Route(path: '/insurance-details',
+      name: 'InsuranceDetails',
+      component: InsuranceDetailsComponent),
 ])
 class AppComponent
     implements OnInit {
 
   AppComponent(this._service);
 
-  @Input()
-  List<Korisnik> korisnici;
-
-  List<Osiguranje> osiguranja;
+  List<Insurance> insurances;
   bool submitted = false;
-  bool novaVijest = true;
+  bool newNews = true;
 
   Service _service;
-  Korisnik korisnik;
+  User user = new User();
 
   num count = 0;
-  var osiguranje;
+  var insurance;
 
   @override
   ngOnInit() async {
@@ -77,44 +74,26 @@ class AppComponent
 
     ref.onValue.listen((e) {
       fb.DataSnapshot datasnapshot = e.snapshot;
-      osiguranja = fromMapList(datasnapshot.val(), Osiguranje);
-      print('osiguranja: $osiguranja');
+      insurances = fromMapList(datasnapshot.val(), Insurance);
+      print('osiguranja: $insurances');
     });
-
-
-    korisnici = (await _service.getKorisnici());
-    korisnik = new Korisnik('Prijavi se', '', '', 'user');
-    korisnici.add(korisnik);
   }
 
-  PrijaviSe() {
-    if (korisnik.email == 'dzenana@live.com') {
-      if (submitted == false) {
-        korisnici.clear();
-      }
-      korisnik = new Korisnik('Dzenana', 'dzenana@live.com', '', 'admin');
-      korisnici.add(korisnik);
+  signIn() {
+    if (user.email == 'dzenana@live.com') {
       submitted = !submitted;
-      novaVijest = false;
+      newNews = false;
     }
 
-    if (korisnik.email == 'azra@live.com') {
-      if (submitted == false) {
-        korisnici.clear();
-      }
-      korisnik = new Korisnik('Azra', 'azra@live.com', '', 'user');
-      korisnici.add(korisnik);
+    if (user.email == 'azra@live.com') {
       submitted = !submitted;
-      novaVijest = true;
+      newNews = true;
     }
   }
 
-  OdjaviSe() {
-    korisnici.clear();
-    korisnik = new Korisnik('Prijavi se', '', '', 'user');
-    korisnici.add(korisnik);
+  signOut() {
     submitted = false;
-    novaVijest = true;
+    newNews = true;
   }
 }
 

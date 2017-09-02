@@ -1,0 +1,123 @@
+    <style>
+        /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+        .row.content {
+            height: 1500px
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+
+            .row.content {
+                height: auto;
+            }
+        }
+    </style>
+<div id="site-content">
+    <main class="main-content">
+        <div class="page">
+            <div class="container">
+                <div class="container-fluid">
+                    <div class="row content">
+
+                        <div class="col-sm-9">
+                            <h1>
+                                <small>If you have any doubts and dilemmas about insurance, and you have not been able to find it
+                                    answer the page, here you can set your query.
+                                </small>
+                            </h1>
+                            <h3>
+                                <small>Note: Answers to the questions asked represent the private opinion of the author
+                                    answers, that is, not the attitudes of Emon's insurance company.
+                                </small>
+                            </h3>
+                            <div>
+                                <hr>
+                                <h4>Ask a question:</h4>
+                                <form role="form">
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="3" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-success"
+                                            (click)="askQuestion()" style="float: right">Submit
+                                    </button>
+                                </form>
+                            </div>
+                            <br><br>
+                            <hr>
+                            <h3>Your questions</h3>
+                            <br><br>
+                            <div class="row" *ngFor="let question of questions">
+                                <div class="col-sm-2 text-center">
+                                    <img src="images/userica.png" class="img-circle" height="65" width="65" alt="User">
+                                </div>
+                                <div class="col-sm-10">
+                                    <h4>{{question.personalName}}
+                                        <small>{{question.date}}</small>
+                                    </h4>
+                                    <p>{{question.question}}</p>
+                                    <br>
+                                    <div id="odgovoriklik" [hidden]="hidden">
+                                        <button (click)="comment(question.id)" class="btn btn-primary"
+                                                style="float: right;">Reply
+                                        </button>
+                                    </div>
+                                </div>
+                                <div id="komentari" style="margin-left: 130px;">
+                                    <div class="col-sm-10" style="visibility: hidden; display: none"
+                                         id="textareaOdgovor">
+                                        <form role="form" style="width: 630px; padding-top: 10px">
+                                            <div class="form-group">
+                                                <textarea id="komentar" class="form-control" rows="3" ngModel
+                                                          required></textarea>
+                                            </div>
+                                            <button (click)="comment(question.id)" type="submit"
+                                                    class="btn btn-info" style="float: right; padding-top: 5px">Comment
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-10" style="width: 630px"
+                                         *ngFor="let comment of question.comments">
+                                        <div class="row">
+                                            <div class="col-sm-2 text-center">
+                                                <img src="images/user.jpg" class="img-circle" height="55" width="55"
+                                                     alt="User">
+                                            </div>
+                                            <div class="col-xs-10">
+                                                <h4>{{comment.personalName}}
+                                                    <small> {{comment.date}}</small>
+                                                </h4>
+                                                <p>{{comment.comment}}</p>
+                                                <br>
+
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- .page -->
+    </main>
+</div>
+

@@ -1,0 +1,54 @@
+<div id="site-content">
+    <main class="main-content">
+        <div class="breadcrumbs">
+            <div class="container">
+                <a href="index.html">Home</a>
+                <span>Contact</span>
+            </div>
+        </div>
+
+        <div class="page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h2 class="section-title text-left">Address</h2>
+
+                        <div class="contact-detail">
+                            <address>
+                                <p>Emona osiguranje <br>
+                                    22. Divizije, Gračanica, Bosna i Hercegovina</p>
+
+                                <p>Phone: +387 35 706 528
+                                    agencijaemona@gmail.com</p>
+                            </address>
+                        </div>
+                    </div>
+                    <div id="uspjesnaPoruka" [hidden]="hidden">
+                        <h1>Thanks for asking! Expect the answer as early as possible.</h1>
+                    </div>
+                    <div class="col-md-9" [hidden]="!hidden">
+                        <h2 class="section-title text-left">Contact us</h2>
+                        <form action="#" class="contact-form">
+                            <div class="row">
+                                <div class="col-md-4"><input type="text" placeholder="Name..." required></div>
+                                <div class="col-md-4"><input type="email" placeholder="Email..." required></div>
+                                <div class="col-md-4"><input type="text" placeholder="Web page..."></div>
+                            </div>
+
+                            <textarea placeholder="Message..." required></textarea>
+
+                            <label class="control-label">Upload File</label>
+                            <input id="input-1" type="file" class="file" placeholder="select">
+
+                            <p class="text-right">
+                                <input type="submit" value="Send" (click)="send()">
+                            </p>
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div> <!-- .page -->
+    </main>
+</div>

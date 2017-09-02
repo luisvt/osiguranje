@@ -1,11 +1,11 @@
-name: osiguranje11082017_v3
-description: A web app that uses AngularDart Components
+name: osiguranje
+description: Angular Dart demo of Insurance Company
 version: 0.0.1
 #homepage: https://www.example.com
 #author: Dzenana <email@example.com>
 
 environment:
-  sdk: '1.24.2'
+  sdk: '^1.24.2'
 
 dependencies:
   angular: ^4.0.0
@@ -19,8 +19,11 @@ dev_dependencies:
   browser: ^0.10.0
   dart_to_js_script_rewriter: ^1.0.1
 
-
 transformers:
 - angular:
     entry_points: web/main.dart
 - dart_to_js_script_rewriter
+
+web:
+  compiler:
+    debug: dartdevc

@@ -7,6 +7,6 @@ part of osiguranje.main;
 // **************************************************************************
 
 _initMirrors() {
-  initClassMirrors({Osiguranje: OsiguranjeClassMirror});
+  initClassMirrors({Insurance: InsuranceClassMirror});
   initFunctionMirrors({});
 }

@@ -13,27 +13,24 @@ import 'package:osiguranje/mocks/news_mock.dart';
 @Injectable()
 class Service {
   //pitanja
-  Future<List<Question>> getPitanja() async => pitanja;
+  Future<List<Question>> getPitanja() async => questions;
 
   Future<Question> GetById(num id) async =>
-      pitanja.firstWhere((pitanje) => pitanje.id == id);
+      questions.firstWhere((pitanje) => pitanje.id == id);
 
-  Future<int> GetMaxPitanje() async => pitanja.length;
+  Future<int> GetMaxPitanje() async => questions.length;
 
   //osiguranje
-  Future<List<Insurance>> getOsiguranja() async => osiguranja;
+  Future<List<Insurance>> getOsiguranja() async => insruances;
 
   Future<Insurance> GetByNameOsiguranje(String naziv) async =>
-      osiguranja.firstWhere((osiguranje) => osiguranje.name == naziv);
-
-  Future<Insurance> GetOsiguranjeById(num id) async =>
-      osiguranja.firstWhere((o) => o.id == id);
+      insruances.firstWhere((osiguranje) => osiguranje.name == naziv);
 
   //korisnici
   Future<String> getTipLogovanogKorisnika() async =>
-      korisnici.first.userType;
+      users.first.userType;
 
-  Future<List<User>> getKorisnici() async => korisnici;
+  Future<List<User>> getKorisnici() async => users;
 
   //vijesti
   Future<List<News>> getVijesti() async => news;

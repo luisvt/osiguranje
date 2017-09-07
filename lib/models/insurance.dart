@@ -6,7 +6,7 @@ part 'package:osiguranje/models/insurance.g.dart';
 
 @serializable
 class Insurance extends _$InsuranceSerializable {
-  num id;
+  @uId String key;
   String name;
   String description;
   String type;

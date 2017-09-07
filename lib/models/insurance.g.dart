@@ -7,21 +7,21 @@ part of osiguranje.models.insurance;
 // **************************************************************************
 
 abstract class _$InsuranceSerializable extends SerializableMap {
-  num get id;
+  String get key;
   String get name;
   String get description;
   String get type;
   String get longDescription;
-  void set id(num v);
+  void set key(String v);
   void set name(String v);
   void set description(String v);
   void set type(String v);
   void set longDescription(String v);
 
-  operator [](Object key) {
-    switch (key) {
-      case 'id':
-        return id;
+  operator [](Object __key) {
+    switch (__key) {
+      case 'key':
+        return key;
       case 'name':
         return name;
       case 'description':
@@ -31,28 +31,28 @@ abstract class _$InsuranceSerializable extends SerializableMap {
       case 'longDescription':
         return longDescription;
     }
-    throwFieldNotFoundException(key, 'Insurance');
+    throwFieldNotFoundException(__key, 'Insurance');
   }
 
-  operator []=(Object key, value) {
-    switch (key) {
-      case 'id':
-        id = value;
+  operator []=(Object __key, __value) {
+    switch (__key) {
+      case 'key':
+        key = __value;
         return;
       case 'name':
-        name = value;
+        name = __value;
         return;
       case 'description':
-        description = value;
+        description = __value;
         return;
       case 'type':
-        type = value;
+        type = __value;
         return;
       case 'longDescription':
-        longDescription = value;
+        longDescription = __value;
         return;
     }
-    throwFieldNotFoundException(key, 'Insurance');
+    throwFieldNotFoundException(__key, 'Insurance');
   }
 
   Iterable<String> get keys => InsuranceClassMirror.fields.keys;
@@ -64,7 +64,8 @@ abstract class _$InsuranceSerializable extends SerializableMap {
 
 _Insurance__Constructor(params) => new Insurance();
 
-const $$Insurance_fields_id = const DeclarationMirror(type: num);
+const $$Insurance_fields_key =
+    const DeclarationMirror(type: String, annotations: const [uId]);
 const $$Insurance_fields_name = const DeclarationMirror(type: String);
 const $$Insurance_fields_description = const DeclarationMirror(type: String);
 const $$Insurance_fields_type = const DeclarationMirror(type: String);
@@ -75,19 +76,19 @@ const InsuranceClassMirror =
     const ClassMirror(name: 'Insurance', constructors: const {
   '': const FunctionMirror(parameters: const {}, call: _Insurance__Constructor)
 }, fields: const {
-  'id': $$Insurance_fields_id,
+  'key': $$Insurance_fields_key,
   'name': $$Insurance_fields_name,
   'description': $$Insurance_fields_description,
   'type': $$Insurance_fields_type,
   'longDescription': $$Insurance_fields_longDescription
 }, getters: const [
-  'id',
+  'key',
   'name',
   'description',
   'type',
   'longDescription'
 ], setters: const [
-  'id',
+  'key',
   'name',
   'description',
   'type',

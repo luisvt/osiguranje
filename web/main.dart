@@ -9,7 +9,7 @@ import 'package:osiguranje/services/Service.dart';
 import 'package:osiguranje/app_component.dart';
 import 'package:osiguranje/models/insurance.dart';
 
-part './main.g.dart';
+part 'main.g.dart';
 
 void main() {
   _initMirrors();

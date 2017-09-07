@@ -1,13 +1,13 @@
 import 'package:osiguranje/models/insurance.dart';
 
 
-List<Insurance> osiguranja = [
+List<Insurance> insruances = [
 
   new Insurance()
     ..name = "Osiguranje imovine"
     ..description = "Vaša privatna kao i poslovna imovina izložena je različitim nepredvidivim događajima koja mogu  znatno uticati  na smanjenje njene vrijednosti."
     ..type = "imovina"
-    ..id = 1
+    ..key = '1'
     ..longDescription = '''<h5 style="font-weight: bolder; font-size: 20px">SPECIJALNA PONUDA - SAMO 29 KM!<br>
     PORODIČNO PUTNIČKO ZDRAVSTVENO OSIGURANJE ZA ZEMLJE REGIONA (Hrvatska, Crna Gora,
     Srbija, Makedonija i Albanija)</h5>
@@ -125,7 +125,7 @@ List<Insurance> osiguranja = [
     ..name = "Osiguranje motornih vozila"
     ..description = "Obavezno osiguranje vlasnika odnosno korisnika motornog vozila je obavezno zakonsko osiguranje od odgovornosti za štete pričinjene trećim osobama."
     ..type = "auto"
-    ..id = 2
+    ..key = '2'
     ..longDescription = "Planiranje putovanja je često kompleksan posao. Kada planiramo putovanje, pogotovo u inostranstvo potrebno je da se zapitamo šta ako nam se nešto desi?"
         "Ako se iznenada u inostranstvu razbolimo ili pretrpimo povredu?"
         "Ako nam je neophodna medicinska pomoć?"
@@ -167,7 +167,7 @@ List<Insurance> osiguranja = [
     ..name = "Putničko zdravstveno osiguranje"
     ..description = "Planiranje putovanja je često kompleksan posao. Kada planiramo putovanje, pogotovo u inostranstvo potrebno je da se zapitamo šta ako nam se nešto desi?"
     ..type = "zivot"
-    ..id = 3
+    ..key = '3'
     ..longDescription = "Planiranje putovanja je često kompleksan posao. Kada planiramo putovanje, pogotovo u inostranstvo potrebno je da se zapitamo šta ako nam se nešto desi?"
         "Ako se iznenada u inostranstvu razbolimo ili pretrpimo povredu?"
         "Ako nam je neophodna medicinska pomoć?"
@@ -208,7 +208,7 @@ List<Insurance> osiguranja = [
     ..name = "Osiguranje nezgode"
     ..description = "Osiguranje nezgode je osiguranje koje pokriva štetu nastalu usljed nezgode, to je vrsta osiguranja osobe od iznenadnih i nepredvidljivih događaja."
     ..type = "zivot"
-    ..id = 4
+    ..key = '4'
     ..longDescription = "Planiranje putovanja je često kompleksan posao. Kada planiramo putovanje, pogotovo u inostranstvo potrebno je da se zapitamo šta ako nam se nešto desi?"
         "Ako se iznenada u inostranstvu razbolimo ili pretrpimo povredu?"
         "Ako nam je neophodna medicinska pomoć?"
@@ -249,7 +249,7 @@ List<Insurance> osiguranja = [
     ..name = "Osiguranje transporta"
     ..description = "Roba je u svakom slučaju izložena određenim rizicima. A kada se roba transportuje  onda se ti rizici multipliciraju. Duga putovanja, utovari, pretovari, istovari, različita prijevozna sredstva, loše vrijeme, krađe, fizička oštećenja samo su neki rizici kojima može biti izložena roba u transportu."
     ..type = "auto"
-    ..id = 5
+    ..key = '5'
     ..longDescription = "Planiranje putovanja je često kompleksan posao. Kada planiramo putovanje, pogotovo u inostranstvo potrebno je da se zapitamo šta ako nam se nešto desi?"
         "Ako se iznenada u inostranstvu razbolimo ili pretrpimo povredu?"
         "Ako nam je neophodna medicinska pomoć?"
@@ -290,7 +290,7 @@ List<Insurance> osiguranja = [
     ..name = "Životno osiguranje"
     ..description = "Osiguranjem onoga što je najvrijednije – Vašeg života i života vaših najbližih - dobivate oslonac za sigurniju budućnost. Osigurajte svoj život i učinite budućnost manje neizvjesnom!"
     ..type = "zivot"
-    ..id = 6
+    ..key = '6'
     ..longDescription = "Planiranje putovanja je često kompleksan posao. Kada planiramo putovanje, pogotovo u inostranstvo potrebno je da se zapitamo šta ako nam se nešto desi?"
         "Ako se iznenada u inostranstvu razbolimo ili pretrpimo povredu?"
         "Ako nam je neophodna medicinska pomoć?"

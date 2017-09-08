@@ -7,12 +7,12 @@ part of osiguranje.models.insurance;
 // **************************************************************************
 
 abstract class _$InsuranceSerializable extends SerializableMap {
-  String get key;
+  String get id;
   String get name;
   String get description;
   String get type;
   String get longDescription;
-  void set key(String v);
+  void set id(String v);
   void set name(String v);
   void set description(String v);
   void set type(String v);
@@ -20,8 +20,8 @@ abstract class _$InsuranceSerializable extends SerializableMap {
 
   operator [](Object __key) {
     switch (__key) {
-      case 'key':
-        return key;
+      case 'id':
+        return id;
       case 'name':
         return name;
       case 'description':
@@ -36,8 +36,8 @@ abstract class _$InsuranceSerializable extends SerializableMap {
 
   operator []=(Object __key, __value) {
     switch (__key) {
-      case 'key':
-        key = __value;
+      case 'id':
+        id = __value;
         return;
       case 'name':
         name = __value;
@@ -64,8 +64,7 @@ abstract class _$InsuranceSerializable extends SerializableMap {
 
 _Insurance__Constructor(params) => new Insurance();
 
-const $$Insurance_fields_key =
-    const DeclarationMirror(type: String, annotations: const [uId]);
+const $$Insurance_fields_id = const DeclarationMirror(type: String);
 const $$Insurance_fields_name = const DeclarationMirror(type: String);
 const $$Insurance_fields_description = const DeclarationMirror(type: String);
 const $$Insurance_fields_type = const DeclarationMirror(type: String);
@@ -76,21 +75,23 @@ const InsuranceClassMirror =
     const ClassMirror(name: 'Insurance', constructors: const {
   '': const FunctionMirror(parameters: const {}, call: _Insurance__Constructor)
 }, fields: const {
-  'key': $$Insurance_fields_key,
+  'id': $$Insurance_fields_id,
   'name': $$Insurance_fields_name,
   'description': $$Insurance_fields_description,
   'type': $$Insurance_fields_type,
   'longDescription': $$Insurance_fields_longDescription
 }, getters: const [
-  'key',
+  'id',
   'name',
   'description',
   'type',
   'longDescription'
 ], setters: const [
-  'key',
+  'id',
   'name',
   'description',
   'type',
   'longDescription'
+], superinterfaces: const [
+  BaseModel
 ]);

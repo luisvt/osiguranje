@@ -1,23 +1,24 @@
 import 'dart:html';
+
 import 'package:angular/angular.dart';
 import 'package:intl/intl.dart';
-import 'package:osiguranje/models/user.dart';
-import 'package:osiguranje/services/Service.dart';
-import 'package:osiguranje/models/comment.dart';
+import 'package:osiguranje/models/question_comment.dart';
 import 'package:osiguranje/models/question.dart';
+import 'package:osiguranje/services/firebase_service.dart';
+import 'package:osiguranje/services/questions_service.dart';
 
 
 @Component(
     selector: 'forum',
     templateUrl: 'forum_component.html',
     directives: const [CORE_DIRECTIVES],
-    providers: const [Service]
+    providers: const [QuestionsService]
 )
 class ForumComponent implements OnInit {
+  final FirebaseService _fbService;
+  ForumComponent(this._questionsService, this._fbService);
 
-  ForumComponent(this._questionService);
-
-  final Service _questionService;
+  final QuestionsService _questionsService;
 
   @Input()
   List<Question> questions;
@@ -28,58 +29,57 @@ class ForumComponent implements OnInit {
 
   @override
   ngOnInit() async {
-    questions = (await _questionService.getPitanja());
+    questions = (await _questionsService.getAllOnce());
   }
 
-  answer(num idPitanje) async {
+  answer(String idPitanje) async {
     var text = querySelectorAll('#textareaOdgovor');
     if (hidden == 'hidden') {
-      text[idPitanje - 1].style.visibility = 'visible';
+      text[0].style.visibility = 'visible';
       hidden = 'visible';
 
-      text[idPitanje - 1].style.display = 'block';
+      text[0].style.display = 'block';
       display = 'block';
     }
     else {
-      text[idPitanje - 1].style.visibility = 'hidden';
+      text[0].style.visibility = 'hidden';
       hidden = 'hidden';
 
-      text[idPitanje - 1].style.display = 'none';
+      text[0].style.display = 'none';
       display = 'none';
     }
   }
 
-  comment(int pitanjeId) async {
-    Question p = await _questionService.GetById(pitanjeId);
-    var komentar = querySelectorAll('#komentar');
-    TextAreaElement element = komentar[pitanjeId - 1];
+  comment(String questionId) async {
+    Question q = await _questionsService.getOnce(questionId);
+    var comment = querySelectorAll('#komentar');
+    TextAreaElement element = comment[0];
 
     if (element.value != "") {
-      List<User> korisnici = await _questionService.getKorisnici();
-
-      num idKomentara;
-      if (p.comments != null) {
-        idKomentara = p.comments.length + 1;
+      num commentId;
+      if (q.comments != null) {
+        commentId = q.comments.length + 1;
       }
       else {
-        idKomentara = 1;
-        p.comments = new List<QuestionComment>();
+        commentId = 1;
+        q.comments = new List<QuestionComment>();
       }
 
       var now = new DateTime.now();
       var formatter = new DateFormat('yyyy-MM-dd');
       String formatted = formatter.format(now);
 
-      p.comments.add(new QuestionComment(
-          idKomentara, korisnici.first.name, element.value, formatted));
+      q.comments.add(new QuestionComment()
+        ..id = commentId.toString()
+        ..personalName = _fbService.user.displayName
+        ..comment = element.value
+        ..date = formatted);
 
-      answer(pitanjeId);
+      answer(questionId);
     }
   }
 
   askQuestion() async {
-    num idPitanje = await _questionService.GetMaxPitanje();
-    List<User> korisnici = await _questionService.getKorisnici();
     TextAreaElement element = querySelector('#pitanje');
 
     if (element.value != "") {
@@ -87,9 +87,11 @@ class ForumComponent implements OnInit {
       var formatter = new DateFormat('yyyy-MM-dd');
       String formatted = formatter.format(now);
 
-      questions.add(new Question(
-          idPitanje + 1, korisnici.first.name, element.value, formatted,
-          null));
+      _questionsService.save(new Question()
+        ..personalName = _fbService.user.displayName
+        ..question = element.value
+        ..date = formatted
+        ..comments = null);
     }
   }
 

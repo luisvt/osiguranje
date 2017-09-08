@@ -13,7 +13,6 @@ import 'package:osiguranje/components/insurance_details/insurance_details_compon
 import 'package:osiguranje/components/insurance_plan/insurance_plan_component.dart';
 import 'package:osiguranje/models/insurance.dart';
 import 'package:osiguranje/models/user.dart';
-import 'package:osiguranje/services/Service.dart';
 import 'package:osiguranje/services/firebase_service.dart';
 
 @Component(
@@ -25,7 +24,6 @@ import 'package:osiguranje/services/firebase_service.dart';
       formDirectives
     ],
     providers: const [
-      Service,
       FirebaseService,
       ROUTER_PROVIDERS,
       const Provider(LocationStrategy, useClass: HashLocationStrategy)

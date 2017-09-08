@@ -2,28 +2,28 @@ import 'dart:html';
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:intl/intl.dart';
-import 'package:osiguranje/services/Service.dart';
 import 'package:osiguranje/models/news.dart';
+import 'package:osiguranje/services/news_service.dart';
 
 
 @Component(
     selector: 'add-news',
     templateUrl: 'add_news_component.html',
     directives: const [CORE_DIRECTIVES, ROUTER_DIRECTIVES],
-    providers: const [Service]
+    providers: const [NewsService]
 )
 class AddNewsComponent implements OnInit {
 
   AddNewsComponent(this._newsService);
 
-  Service _newsService;
+  NewsService _newsService;
 
   @Input()
   List<News> news;
 
   @override
   ngOnInit() async {
-    news = (await _newsService.getVijesti());
+    news = (await _newsService.getAllOnce());
   }
 
   addNews() async {
@@ -34,8 +34,11 @@ class AddNewsComponent implements OnInit {
     TextAreaElement elementVijest = querySelector('#vijest');
     InputElement elementNaslov = querySelector('#naslov');
     InputElement elementSlika = querySelector('#slika');
-    news.add(new News(
-        2, elementNaslov.value, elementVijest.value, formatted,
-        'images/`logo@2x.png'));
+    news.add(new News()
+        ..id = "2"
+        ..address = elementNaslov.value
+        ..news = elementVijest.value
+        ..date = formatted
+        ..picture = 'images/`logo@2x.png');
   }
 }

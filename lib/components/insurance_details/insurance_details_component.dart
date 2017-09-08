@@ -1,8 +1,6 @@
 import 'package:angular/angular.dart';
 import 'package:angular_router/angular_router.dart';
 import 'package:osiguranje/models/insurance.dart';
-import 'package:osiguranje/services/Service.dart';
-import 'package:osiguranje/services/firebase_service.dart';
 import 'package:osiguranje/services/insurances_service.dart';
 
 @Component(

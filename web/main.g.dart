@@ -7,6 +7,11 @@ part of osiguranje.main;
 // **************************************************************************
 
 _initMirrors() {
-  initClassMirrors({Insurance: InsuranceClassMirror});
+  initClassMirrors({
+    News: NewsClassMirror,
+    Question: QuestionClassMirror,
+    QuestionComment: QuestionCommentClassMirror,
+    Insurance: InsuranceClassMirror
+  });
   initFunctionMirrors({});
 }

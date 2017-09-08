@@ -1,14 +1,16 @@
-import 'package:osiguranje/models/comment.dart';
+library osiguranje.models.question;
 
+import 'package:dson/dson.dart';
+import 'package:osiguranje/models/question_comment.dart';
+import 'package:osiguranje/services/crud_service.dart';
 
-class Question {
-  Question(this.id, this.personalName, this.question, this.date, this.comments);
+part 'question.g.dart';
 
-  num id;
+@serializable
+class Question extends _$QuestionSerializable implements BaseModel {
+  String id;
   String personalName;
   String question;
   String date;
   List<QuestionComment> comments;
-
-  String toString() => '$personalName';
 }

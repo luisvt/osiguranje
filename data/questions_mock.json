@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "personalName": "Azra",
+    "question": "Kako se najčešće određuje vrednost za osiguranja imovine?",
+    "date": "2017-01-01",
+    "comments": [
+      {
+        "id": "0",
+        "personalName": "Emir",
+        "comment": "Određuje se prema građevinskoj vrednosti nekretnine. Potrebno je proceniti i utvrditi Sumu osiguranja koja bi u slučaju nastanka štetnog događaja bila dovoljna za vraćanje nekretnine u prvobitno stanje.",
+        "date": "2017-01-01"
+      }
+    ]
+  }
+]
